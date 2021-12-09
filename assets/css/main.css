@@ -11,7 +11,7 @@ u, i, center, dl, dt, dd, ol, ul, li, fieldset,
 form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside,
 canvas, details, embed, figure, figcaption,
-footer, header, hgroup, menu, nav, output, ruby,
+footer, hgroup, menu, nav, output, ruby,
 section, summary, time, mark, audio, video {
 	margin: 0;
 	padding: 0;
@@ -23,6 +23,7 @@ section, summary, time, mark, audio, video {
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
 	display: block;}
+
 
 body {
 	line-height: 1;
@@ -78,7 +79,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #f2f5f3;
+		background: #f5f5f5;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -95,16 +96,21 @@ input, select, textarea {
 	body, input, textarea, select {
 		font-family: 'Open Sans', sans-serif;
 		font-weight: 400;
-		color: #6b7770;
 		font-size: 13pt;
 		line-height: 2em;
+	}
+	body.dark {
+		color: #2C2B26;
+	}
+	body.light {
+		color: #f5f5f5;
 	}
 
 	h1, h2, h3, h4, h5, h6 {
 		font-family: 'Open Sans Condensed', sans-serif;
 		font-weight: 700;
-		text-transform: uppercase;
-		color: #6b7770;
+		color: #B0829B;
+		background-color: transparent;
 		margin: 0 0 0.5em 0;
 		line-height: 1.3;
 	}
@@ -114,6 +120,9 @@ input, select, textarea {
 		color: inherit;
 	}
 
+	h1 {
+		font-size: 2em;
+	}
 	h2 {
 		font-size: 1.65em;
 	}
@@ -140,12 +149,14 @@ input, select, textarea {
 	}
 
 	a {
-		color: #006376;
-		text-decoration: underline;
+		color: #f5f5f5;
+		text-decoration: none;
+		font-weight: bold;
 	}
 
 		a:hover {
-			text-decoration: none;
+			
+			color: #B0829B;
 		}
 
 	b, strong {
@@ -188,7 +199,17 @@ input, select, textarea {
 	p, ul, ol, dl, table {
 		margin-bottom: 3em;
 	}
-
+	p.dark {
+		color: #2C2B26;
+	}
+	p.light {
+		background-color: transparent;
+		color: #f5f5f5;
+	}
+	p.color {
+		background-color: transparent;
+		color: #B0829B;
+	}
 /* Section/Article */
 
 	section, article {
@@ -203,7 +224,6 @@ input, select, textarea {
 		display: block;
 		font-family: 'Open Sans Condensed', sans-serif;
 		font-weight: 700;
-		text-transform: uppercase;
 		color: #c1cac5;
 	}
 
@@ -254,6 +274,49 @@ input, select, textarea {
 			}
 
 		}
+
+/* Split the screen in half */
+.split {
+	height: 87%;
+	width: 50%;
+	position: fixed;
+	z-index: 1;
+	top: 110px;
+	overflow-x: hidden;
+	overflow-y: scroll;
+	
+  }
+  
+  /* Control the left side */
+  .left {
+	left: 0;
+  }
+  
+  /* Control the right side */
+  .right {
+	right: 0;
+  }
+  	.dark {
+		background-color: #2C2B26;
+	}
+	.light {
+		background-color: #f5f5f5;
+	}
+	.color {
+		background-color: #B0829B;
+	}
+  
+  
+  /* If you want the content centered horizontally and vertically */
+  .centered {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	vertical-align: middle;
+  }
+
 
 /* Row */
 
@@ -2297,53 +2360,97 @@ input, select, textarea {
 
 /* Header */
 
-	#header {
+	.header {
 		text-align: center;
+		position:fixed;
+		top:0;
+		width: 100%;
 		font-size: 2em;
 		font-family: 'Open Sans Condensed', sans-serif;
 		font-weight: 700;
-		text-transform: uppercase;
-		padding: 2em 0;
-		background: #fff;
+		/*padding: 10px;*/
+		background: #2c2b26;
 		margin: 0 auto;
 	}
 
-		#header .logo {
+		.header .logo {
 			position: relative;
 			text-align: center;
 			border-top: solid 5px darkgray;
-			top: 0.65em;
+			/*top: 0.65em;*/
 		}
 
-			#header .logo div {
+			.header .logo div {
 				background: #fff;
 				position: relative;
 				display: inline-block;
 				padding: 0 1.5em 0 1.5em;
-				top: -0.65em;
+				/*top: -0.65em;*/
 			}
 
-			#header .logo h1 {
-				display: inline;
+			.header h2 {
+				display:flex;
+				color: #f5f5f5;
+				padding-left: 30px;
 			}
 
-			#header .logo p {
+			.header .logo p {
 				display: inline;
 				color: #C1CAC5;
 			}
 
-/* Nav */
 
+/* Dropdown Button */
+.dropbtn {
+	color: white;
+	padding: 16px;
+	font-size: 16px;
+	border: none;
+  }
+  
+  /* The container <div> - needed to position the dropdown content */
+  .dropdown {
+	position: relative;
+	display: inline-block;
+  }
+  
+  /* Dropdown Content (Hidden by Default) */
+  .dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #2C2B26;
+	left: -80px;
+	width: 250px;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	z-index: 1;
+  }
+  
+  /* Links inside the dropdown */
+  .dropdown-content a {
+	color: black;
+	padding: 12px 16px;
+	text-decoration: none;
+	display: block;
+  }
+  
+  /* Change color of dropdown links on hover */
+  .dropdown-content a:hover {background-color: #f5f5f5;}
+  
+  /* Show the dropdown menu on hover */
+  .dropdown:hover .dropdown-content {display: block;}
+  
 	body {
 		padding-top: 3.25em;
 	}
 
+	/* Nav */
+
 	#nav {
 		position: fixed;
-		top: 0;
+		top: 60px;
 		left: 0;
 		z-index: 1000;
-		background-color: black;
+		background-color: #2C2B26;
 		width: 100%;
 		height: 3.25em;
 		line-height: 3.25em;
@@ -2352,15 +2459,18 @@ input, select, textarea {
 		font-weight: 700;
 		text-transform: uppercase;
 		cursor: default;
+		
 	}
 
 		#nav ul {
 			position: relative;
 			z-index: 1001;
+			float: right;
 		}
 
 		#nav li {
 			display: inline-block;
+			float: left;
 			margin: 0 0.5em 0 0.5em;
 			top: 0;
 			position: relative;
@@ -2383,7 +2493,7 @@ input, select, textarea {
 				position: relative;
 				display: block;
 				text-decoration: none;
-				color: #6b7770;
+				color: #f5f5f5;
 				top: -6px;
 				padding: 6px 1.5em 0.25em 1.5em;
 				border-bottom-left-radius: 6px;
@@ -2396,23 +2506,20 @@ input, select, textarea {
 			}
 
 			#nav li:hover a, #nav li:hover span {
-				background: #C1CAC5;
-				color: #fff;
+				color: #B0829B;
 			}
 
 			#nav li.active a, #nav li.active span {
-				background: #C1CAC5;
-				color: #fff;
+				color: #B0829B;
 			}
 
 			#nav li.current a {
-				background: #b1ddab;
-				color: #fff;
+				color: #B0829B;
 			}
 
 	.dropotron {
 		list-style: none;
-		background: #6B7770;
+		/*background: #6B7770;*/
 		color: #fff;
 		border-radius: 6px;
 		line-height: 2.75em;
@@ -2534,7 +2641,7 @@ input, select, textarea {
 
 	#main {
 		background: #fff;
-		border-top: solid 5px #darkgray;
+		border-top: solid 5px darkgray;
 		border-bottom: solid 5px #c1cac5;
 		border-top-width: 35px;
 		border-bottom-width: 10px;
@@ -2646,6 +2753,7 @@ input, select, textarea {
 		/* Header */
 
 			#header {
+				height: 25%;
 				font-size: 1.5em;
 			}
 
@@ -2782,7 +2890,7 @@ input, select, textarea {
 					text-transform: uppercase;
 					font-size: 1.25em;
 					line-height: 44px;
-					color: #black;
+					color: black;
 					z-index: 1000;
 					text-align: center;
 				}
@@ -2820,14 +2928,14 @@ input, select, textarea {
 						width: 44px;
 						height: 44px;
 						content: '\f0c9';
-						color: #black;
+						color: black;
 						text-align: center;
 						line-height: 44px;
 						font-size: 20px;
 					}
 
 					#titleBar .toggle:active:before {
-						background-color: #black;
+						background-color: black;
 					}
 
 			#navPanel {
